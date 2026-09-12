@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://assets/world/bridge_post.png" type="Texture2D" id="1_post"]
+
+[node name="BridgePost" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_post")
+

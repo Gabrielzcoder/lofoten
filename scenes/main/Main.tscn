@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://c0ykj8ywo6efn"]
+
+[ext_resource type="Script" uid="uid://hiiiyjnjbf0a" path="res://scripts/main/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueUI.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DecisionUI.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/ui/LoadingScreen.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/EndingUI.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/MainMenu.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/world/BridgePost.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/ui/EnvironmentalTransition.tscn" id="10"]
+
+[sub_resource type="RectangleShape2D" id="LeftWallShape"]
+size = Vector2(40, 1200)
+
+[sub_resource type="RectangleShape2D" id="RightWallShape"]
+size = Vector2(40, 1200)
+
+[node name="Main" type="Node2D" unique_id=1114131827]
+script = ExtResource("1")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1488191669]
+texture_filter = 1
+
+[node name="Atmosphere" type="CanvasModulate" parent="." unique_id=562262736]
+color = Color(0.96, 0.98, 1, 1)
+
+[node name="NPCs" type="Node2D" parent="." unique_id=77055198]
+
+[node name="Interactables" type="Node2D" parent="." unique_id=2064470216]
+
+[node name="BridgeForegroundPosts" type="Node2D" parent="." unique_id=687341091]
+visible = false
+z_index = 40
+
+[node name="Post1" parent="BridgeForegroundPosts" unique_id=334699128 instance=ExtResource("9")]
+position = Vector2(197, 475)
+
+[node name="Post2" parent="BridgeForegroundPosts" unique_id=1869007905 instance=ExtResource("9")]
+position = Vector2(463, 475)
+
+[node name="Post3" parent="BridgeForegroundPosts" unique_id=1922458960 instance=ExtResource("9")]
+position = Vector2(735, 475)
+
+[node name="Post4" parent="BridgeForegroundPosts" unique_id=1076012493 instance=ExtResource("9")]
+position = Vector2(996, 475)
+
+[node name="MapBounds" type="StaticBody2D" parent="." unique_id=508768872]
+
+[node name="LeftWall" type="CollisionShape2D" parent="MapBounds" unique_id=1909484042]
+position = Vector2(-10, 450)
+shape = SubResource("LeftWallShape")
+
+[node name="RightWall" type="CollisionShape2D" parent="MapBounds" unique_id=166697587]
+position = Vector2(1210, 450)
+shape = SubResource("RightWallShape")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1049890947]
+position = Vector2(600, 750)
+
+[node name="Player" parent="." unique_id=781959632 instance=ExtResource("2")]
+position = Vector2(600, 708)
+
+[node name="HUD" parent="." unique_id=165046848 instance=ExtResource("3")]
+
+[node name="DialogueUI" parent="." unique_id=902413786 instance=ExtResource("4")]
+
+[node name="DecisionUI" parent="." unique_id=1366734395 instance=ExtResource("5")]
+
+[node name="MainMenu" parent="." unique_id=777397177 instance=ExtResource("8")]
+
+[node name="EndingUI" parent="." unique_id=1497835419 instance=ExtResource("7")]
+
+[node name="EnvironmentalTransition" parent="." unique_id=340871917 instance=ExtResource("10")]
+
+[node name="LoadingScreen" parent="." unique_id=1041737755 instance=ExtResource("6")]

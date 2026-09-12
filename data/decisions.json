@@ -1,0 +1,261 @@
+[
+  {
+    "id": "north_sea_export_contract", "category": "industry", "weight": 1.0, "repeatable": false, "tags": ["production_growth"],
+    "title": "Contrato do Mar do Norte",
+    "context": "Um comprador estrangeiro oferece um contrato de três anos. A refinaria precisará abrir um turno noturno e acelerar os poços.",
+    "conditions": {"max": {"production": 78}},
+    "choices": [
+      {"id": "accept_export_contract", "text": "Assinar o contrato e abrir o turno noturno", "event": "factory_expansion", "effects": {"money": 34, "oil": -10, "production": 13, "employment": 8, "environment": -12, "company_approval": 9, "population_approval": 2, "economy": 5}},
+      {"id": "limit_extraction", "text": "Recusar o volume extra e preservar os poços", "event": "production_cut", "effects": {"money": -4, "oil": 3, "production": -3, "employment": -2, "environment": 4, "company_approval": -6, "population_approval": 3}}
+    ]
+  },
+  {
+    "id": "wind_farm_program", "category": "diversification", "weight": 1.0, "repeatable": false, "tags": ["diversification", "environment"],
+    "title": "Ventos sobre o promontório",
+    "context": "A cooperativa elétrica propõe turbinas nas falésias. A obra empregaria moradores agora, mas desviaria capital do próximo trimestre.",
+    "choices": [
+      {"id": "fund_wind_farm", "text": "Financiar o parque eólico completo", "event": "diversification_push", "effects": {"money": -30, "production": -4, "employment": 6, "environment": 8, "company_approval": -5, "population_approval": 6, "economy": 7, "diversification": 20}},
+      {"id": "pilot_wind_project", "text": "Autorizar duas turbinas como projeto-piloto", "event": "diversification_push", "effects": {"money": -14, "employment": 3, "environment": 3, "company_approval": -1, "population_approval": 3, "economy": 3, "diversification": 9}}
+    ]
+  },
+  {
+    "id": "refinery_filter_cycle", "category": "environment", "weight": 1.1, "repeatable": true, "cooldown_days": 5, "tags": ["environment", "maintenance"],
+    "title": "A fumaça do turno da madrugada",
+    "context": "A clínica registrou novas crises respiratórias. Uma atualização dos filtros exige reduzir parte da operação durante a instalação.",
+    "conditions": {"max": {"environment": 72}, "min": {"production": 30}},
+    "choices": [
+      {"id": "install_full_filters", "text": "Parar uma linha e instalar o sistema completo", "event": "environmental_action", "effects": {"money": -20, "production": -6, "environment": 16, "population_approval": 11, "company_approval": -5}},
+      {"id": "phase_filter_installation", "text": "Instalar filtros por etapas sem interromper turnos", "event": "environmental_action", "effects": {"money": -11, "production": -2, "environment": 7, "population_approval": 4, "company_approval": -1}}
+    ]
+  },
+  {
+    "id": "coastal_tourism_training", "category": "diversification", "weight": 1.0, "repeatable": false, "tags": ["diversification", "society"],
+    "title": "Inverno além da refinaria",
+    "context": "Pousadas e barqueiros querem formar guias entre os trabalhadores mais jovens e abrir uma nova fonte de renda.",
+    "choices": [
+      {"id": "fund_tourism_program", "text": "Criar bolsas e uma escola de turismo costeiro", "event": "diversification_push", "effects": {"money": -23, "production": -5, "employment": 7, "population_approval": 9, "company_approval": -5, "economy": 9, "diversification": 18}},
+      {"id": "small_apprenticeship", "text": "Oferecer aprendizagem nos fins de semana", "event": "diversification_push", "effects": {"money": -10, "production": -1, "employment": 3, "population_approval": 4, "company_approval": -1, "economy": 4, "diversification": 8}}
+    ]
+  },
+  {
+    "id": "terminal_spill_response", "category": "environment", "weight": 0.55, "repeatable": true, "cooldown_days": 5, "tags": ["environment"],
+    "title": "Brilho escuro na enseada",
+    "context": "Uma válvula do terminal vazou durante a noite. Suspender o cais permite uma limpeza profunda, mas atrasa entregas.",
+    "conditions": {"min": {"production": 38}},
+    "choices": [
+      {"id": "suspend_terminal", "text": "Suspender o terminal e mobilizar a limpeza", "event": "environmental_action", "effects": {"money": -26, "production": -10, "employment": -3, "environment": 13, "population_approval": 12, "company_approval": -8}},
+      {"id": "minimize_spill", "text": "Conter a mancha sem interromper embarques", "event": "spill_crisis", "effects": {"money": -8, "production": -1, "environment": -14, "population_approval": -10, "company_approval": 4}}
+    ]
+  },
+  {
+    "id": "independent_business_credit", "category": "society", "weight": 1.0, "repeatable": true, "cooldown_days": 5, "tags": ["society", "diversification"],
+    "title": "As chaves das lojas vazias",
+    "context": "Moradores propõem ocupar imóveis fechados com oficinas, uma padaria e uma cooperativa de reparos.",
+    "choices": [
+      {"id": "release_local_credit", "text": "Abrir crédito para negócios independentes", "event": "diversification_push", "effects": {"money": -24, "employment": 8, "population_approval": 9, "company_approval": -5, "economy": 11, "diversification": 15}},
+      {"id": "supplier_credit_only", "text": "Financiar fornecedores ligados à refinaria", "event": "factory_expansion", "effects": {"money": -12, "production": 3, "employment": 5, "population_approval": 2, "company_approval": 4, "economy": 6, "diversification": 4}}
+    ]
+  },
+  {
+    "id": "production_shift_adjustment", "category": "industry", "weight": 0.9, "repeatable": true, "cooldown_days": 3, "tags": ["production_growth"],
+    "title": "Mais um turno na linha norte",
+    "context": "A gerência afirma que existe demanda para um turno adicional, desde que a ilha aceite mais caminhões e consumo de reservas.",
+    "conditions": {"max": {"production": 74, "oil": 80}, "min": {"oil": 28}},
+    "choices": [
+      {"id": "open_extra_shift", "text": "Abrir o turno e contratar imediatamente", "event": "factory_expansion", "effects": {"money": 16, "oil": -7, "production": 10, "employment": 7, "environment": -7, "company_approval": 6, "economy": 4}},
+      {"id": "keep_current_shift", "text": "Manter o ritmo e revisar a demanda depois", "event": "production_stable", "effects": {"money": -2, "oil": 2, "production": -1, "company_approval": -3, "environment": 2}}
+    ]
+  },
+  {
+    "id": "controlled_extraction_slowdown", "category": "industry", "weight": 0.85, "repeatable": true, "cooldown_days": 3, "tags": ["production_control"],
+    "title": "Pausa calculada nos poços",
+    "context": "Engenheiros sugerem reduzir a extração por algumas semanas para preservar equipamentos e reservas.",
+    "conditions": {"min": {"production": 45}},
+    "choices": [
+      {"id": "slow_extraction", "text": "Reduzir o ritmo e preservar as reservas", "event": "production_cut", "effects": {"money": -8, "oil": 5, "production": -9, "employment": -3, "environment": 6, "company_approval": -5, "population_approval": 3}},
+      {"id": "maintain_extraction_pressure", "text": "Manter o ritmo até o fim do trimestre", "event": "factory_expansion", "effects": {"money": 13, "oil": -6, "production": 5, "employment": 2, "environment": -6, "company_approval": 5}}
+    ]
+  },
+  {
+    "id": "preventive_refinery_maintenance", "category": "industry", "weight": 1.0, "repeatable": true, "cooldown_days": 4, "tags": ["maintenance"],
+    "title": "Parafusos antes da pane",
+    "context": "A equipe técnica pede uma parada preventiva. Adiar economiza agora, mas aumenta o desgaste e o risco de acidente.",
+    "conditions": {"min": {"production": 42}},
+    "choices": [
+      {"id": "fund_preventive_maintenance", "text": "Financiar a revisão completa dos equipamentos", "event": "maintenance_upgrade", "effects": {"money": -18, "production": -5, "employment": 2, "environment": 3, "population_approval": 4, "company_approval": -1}},
+      {"id": "delay_maintenance", "text": "Adiar a parada e cumprir as entregas", "event": "factory_expansion", "effects": {"money": 10, "production": 4, "environment": -5, "company_approval": 4, "population_approval": -3}}
+    ]
+  },
+  {
+    "id": "worker_safety_standard", "category": "society", "weight": 1.0, "repeatable": false, "tags": ["society", "maintenance"],
+    "title": "Capacetes, sensores e silêncio",
+    "context": "O sindicato pede sensores de gás, equipamentos novos e poder para interromper linhas inseguras.",
+    "choices": [
+      {"id": "adopt_worker_safety_standard", "text": "Adotar integralmente o novo padrão de segurança", "event": "worker_support", "effects": {"money": -17, "production": -4, "employment": 2, "population_approval": 10, "company_approval": -4, "environment": 2}},
+      {"id": "offer_basic_safety_training", "text": "Oferecer apenas treinamento e inspeções mensais", "event": "worker_support", "effects": {"money": -7, "production": -1, "population_approval": 4, "company_approval": -1}}
+    ]
+  },
+  {
+    "id": "port_logistics_expansion", "category": "industry", "weight": 0.8, "repeatable": true, "cooldown_days": 5, "tags": ["production_growth", "economy"],
+    "title": "O cais que nunca dorme",
+    "context": "Transportadoras oferecem ampliar o pátio de carga e automatizar o terminal para receber mais navios.",
+    "conditions": {"min": {"money": 20}, "max": {"production": 82}},
+    "choices": [
+      {"id": "expand_port_logistics", "text": "Ampliar o terminal e as vias de carga", "event": "factory_expansion", "effects": {"money": -22, "production": 9, "employment": 5, "environment": -8, "company_approval": 8, "economy": 8}},
+      {"id": "modernize_without_expansion", "text": "Modernizar apenas a operação existente", "event": "maintenance_upgrade", "effects": {"money": -12, "production": 4, "employment": 1, "environment": -2, "company_approval": 3, "economy": 4}}
+    ]
+  },
+  {
+    "id": "industrial_emission_limits", "category": "environment", "weight": 1.0, "repeatable": false, "tags": ["environment"],
+    "title": "Um teto para a fumaça",
+    "context": "A prefeitura propõe limites públicos de emissão e multas progressivas para a refinaria.",
+    "conditions": {"max": {"environment": 70}},
+    "choices": [
+      {"id": "enforce_emission_limits", "text": "Aprovar limites e fiscalização independente", "event": "environmental_action", "effects": {"money": -12, "production": -7, "environment": 14, "population_approval": 12, "company_approval": -9}},
+      {"id": "voluntary_emission_targets", "text": "Adotar metas voluntárias negociadas com a empresa", "event": "environmental_action", "effects": {"money": -5, "production": -2, "environment": 5, "population_approval": 3, "company_approval": 1}}
+    ]
+  },
+  {
+    "id": "coastline_cleanup_budget", "category": "environment", "weight": 1.0, "repeatable": true, "cooldown_days": 4, "tags": ["environment", "society"],
+    "title": "Barcos de limpeza na baía",
+    "context": "Pescadores mapearam resíduos perto da costa e oferecem suas embarcações para uma operação contínua de limpeza.",
+    "conditions": {"max": {"environment": 64}},
+    "choices": [
+      {"id": "fund_coastline_cleanup", "text": "Financiar equipes locais de limpeza", "event": "environmental_action", "effects": {"money": -16, "employment": 4, "environment": 11, "population_approval": 9, "economy": 2}},
+      {"id": "company_cleanup_contract", "text": "Transferir a limpeza para uma contratada da refinaria", "event": "environmental_action", "effects": {"money": -8, "environment": 5, "company_approval": 3, "population_approval": 1}}
+    ]
+  },
+  {
+    "id": "fjord_habitat_recovery", "category": "environment", "weight": 0.85, "repeatable": false, "min_day": 2, "tags": ["environment", "diversification"],
+    "title": "O retorno das aves marinhas",
+    "context": "Biólogos propõem recuperar áreas úmidas e restringir obras em uma faixa vulnerável do fiorde.",
+    "conditions": {"max": {"environment": 58}},
+    "choices": [
+      {"id": "restore_fjord_habitat", "text": "Criar a reserva e financiar a recuperação", "event": "environmental_action", "effects": {"money": -25, "production": -3, "environment": 17, "population_approval": 11, "company_approval": -6, "diversification": 5}},
+      {"id": "protect_small_habitat_zone", "text": "Proteger apenas a área mais afetada", "event": "environmental_action", "effects": {"money": -10, "production": -1, "environment": 7, "population_approval": 4, "company_approval": -2}}
+    ]
+  },
+  {
+    "id": "independent_factory_inspection", "category": "environment", "weight": 0.8, "repeatable": true, "cooldown_days": 5, "tags": ["environment", "maintenance"],
+    "title": "Pranchetas no portão",
+    "context": "Auditores independentes pedem acesso às linhas de produção e aos registros de descarte da empresa.",
+    "conditions": {"min": {"production": 35}},
+    "choices": [
+      {"id": "authorize_full_factory_inspection", "text": "Dar acesso total aos auditores", "event": "environmental_action", "effects": {"money": -9, "production": -3, "environment": 8, "population_approval": 8, "company_approval": -7}},
+      {"id": "internal_factory_audit", "text": "Realizar uma auditoria interna reservada", "event": "maintenance_upgrade", "effects": {"money": -4, "production": -1, "environment": 2, "company_approval": 2, "population_approval": -1}}
+    ]
+  },
+  {
+    "id": "northern_investor_summit", "category": "economy", "weight": 0.9, "repeatable": false, "tags": ["economy", "production_growth"],
+    "title": "Visitantes de gravata no inverno",
+    "context": "Um grupo de investidores quer conhecer a ilha. Eles exigem garantias industriais, mas podem financiar novos negócios.",
+    "choices": [
+      {"id": "court_industrial_investors", "text": "Oferecer garantias à expansão industrial", "event": "investor_drive", "effects": {"money": 28, "production": 8, "employment": 5, "environment": -7, "company_approval": 10, "economy": 8}},
+      {"id": "court_mixed_economy_investors", "text": "Apresentar um plano de economia mista", "event": "diversification_push", "effects": {"money": 12, "employment": 4, "company_approval": 1, "population_approval": 5, "economy": 9, "diversification": 10}}
+    ]
+  },
+  {
+    "id": "municipal_tax_balance", "category": "economy", "weight": 0.8, "repeatable": true, "cooldown_days": 4, "tags": ["economy"],
+    "title": "A conta que cruza a ponte",
+    "context": "O orçamento municipal precisa de ajuste. A direção pressiona por incentivos; os bairros pedem arrecadação para serviços.",
+    "choices": [
+      {"id": "grant_factory_tax_incentive", "text": "Reduzir impostos da fábrica por um ciclo", "event": "factory_expansion", "effects": {"money": -13, "production": 7, "employment": 4, "company_approval": 8, "economy": 4, "population_approval": -4}},
+      {"id": "raise_industrial_tax", "text": "Aumentar a contribuição industrial", "event": "lower_city_investment", "effects": {"money": 18, "production": -4, "employment": -2, "company_approval": -9, "population_approval": 6, "economy": -1}}
+    ]
+  },
+  {
+    "id": "island_emergency_reserve", "category": "economy", "weight": 0.8, "repeatable": true, "cooldown_days": 5, "tags": ["economy", "oil_crisis"],
+    "title": "Dinheiro para a próxima tempestade",
+    "context": "Economistas defendem reservar parte do caixa para choques no preço do petróleo ou acidentes no terminal.",
+    "conditions": {"min": {"money": 35}},
+    "choices": [
+      {"id": "build_emergency_reserve", "text": "Separar recursos para o fundo de emergência", "event": "emergency_fund", "effects": {"money": -20, "company_approval": -2, "population_approval": 5, "economy": 6}},
+      {"id": "keep_capital_in_operation", "text": "Manter o capital girando na economia", "event": "investor_drive", "effects": {"money": 7, "production": 3, "company_approval": 4, "economy": 2}}
+    ]
+  },
+  {
+    "id": "lower_city_public_services", "category": "society", "weight": 1.0, "repeatable": false, "tags": ["society"],
+    "title": "Luzes acesas depois do turno",
+    "context": "A Cidade Baixa pede uma clínica ampliada, ônibus noturnos e manutenção das ruas próximas à refinaria.",
+    "choices": [
+      {"id": "fund_lower_city_services", "text": "Financiar clínica, transporte e manutenção", "event": "lower_city_investment", "effects": {"money": -24, "employment": 4, "population_approval": 13, "economy": 5, "company_approval": -3}},
+      {"id": "fund_clinic_only", "text": "Priorizar apenas a ampliação da clínica", "event": "worker_support", "effects": {"money": -11, "employment": 1, "population_approval": 7, "company_approval": -1}}
+    ]
+  },
+  {
+    "id": "worker_housing_program", "category": "society", "weight": 0.9, "repeatable": false, "tags": ["society"],
+    "title": "Janelas para quem mantém as máquinas",
+    "context": "Aluguéis subiram perto da fábrica. A cooperativa habitacional pede terrenos e crédito para moradias de trabalhadores.",
+    "choices": [
+      {"id": "finance_worker_housing", "text": "Financiar moradias e limitar reajustes", "event": "worker_support", "effects": {"money": -27, "employment": 5, "population_approval": 14, "economy": 4, "company_approval": -4}},
+      {"id": "company_dormitories", "text": "Apoiar alojamentos administrados pela empresa", "event": "factory_expansion", "effects": {"money": -13, "employment": 3, "population_approval": 3, "company_approval": 6, "economy": 2}}
+    ]
+  },
+  {
+    "id": "fishing_cooperative", "category": "diversification", "weight": 1.0, "repeatable": false, "tags": ["diversification", "society"],
+    "title": "Redes novas no cais antigo",
+    "context": "Pescadores querem uma cooperativa de processamento local para vender sem atravessadores e empregar jovens.",
+    "conditions": {"min": {"environment": 30}},
+    "choices": [
+      {"id": "fund_fishing_cooperative", "text": "Construir a unidade cooperativa", "event": "diversification_push", "effects": {"money": -21, "employment": 8, "environment": -1, "population_approval": 10, "economy": 9, "diversification": 14}},
+      {"id": "small_fishing_grants", "text": "Oferecer subsídios para barcos independentes", "event": "diversification_push", "effects": {"money": -9, "employment": 4, "population_approval": 5, "economy": 4, "diversification": 6}}
+    ]
+  },
+  {
+    "id": "cold_climate_technology_hub", "category": "diversification", "weight": 0.8, "repeatable": false, "min_day": 3, "tags": ["diversification", "economy"],
+    "title": "Laboratórios sob a neve",
+    "context": "Uma universidade propõe um pequeno centro de tecnologia marítima e energia para climas frios.",
+    "choices": [
+      {"id": "build_technology_hub", "text": "Financiar o centro de pesquisa e bolsas", "event": "diversification_push", "effects": {"money": -32, "employment": 6, "population_approval": 8, "company_approval": -2, "economy": 12, "diversification": 18}},
+      {"id": "industry_research_partnership", "text": "Criar parceria tecnológica com a refinaria", "event": "maintenance_upgrade", "effects": {"money": -16, "production": 5, "employment": 3, "company_approval": 6, "economy": 7, "diversification": 7}}
+    ]
+  },
+  {
+    "id": "tourism_ferry_infrastructure", "category": "diversification", "weight": 0.75, "repeatable": true, "cooldown_days": 5, "tags": ["diversification", "economy"],
+    "title": "Um ferry para além dos petroleiros",
+    "context": "Empreendedores pedem um terminal menor para ferries, sinalização e trilhas que prolonguem a temporada turística.",
+    "conditions": {"min": {"diversification": 12, "environment": 28}},
+    "choices": [
+      {"id": "expand_tourism_infrastructure", "text": "Construir o terminal e recuperar as trilhas", "event": "diversification_push", "effects": {"money": -26, "employment": 7, "environment": 2, "population_approval": 8, "economy": 10, "diversification": 13}},
+      {"id": "seasonal_ferry_trial", "text": "Testar uma linha sazonal de ferry", "event": "diversification_push", "effects": {"money": -10, "employment": 3, "economy": 4, "diversification": 6}}
+    ]
+  },
+  {
+    "id": "regional_trade_route", "category": "economy", "weight": 0.8, "repeatable": false, "min_day": 2, "tags": ["economy", "diversification"],
+    "title": "Carga que não vem dos poços",
+    "context": "Cidades vizinhas oferecem uma rota comercial para alimentos, peças navais e produtos das oficinas locais.",
+    "choices": [
+      {"id": "join_regional_trade_route", "text": "Integrar Skarvik à nova rota comercial", "event": "diversification_push", "effects": {"money": -12, "employment": 5, "population_approval": 6, "economy": 11, "diversification": 9}},
+      {"id": "prioritize_oil_shipping", "text": "Reservar o porto para contratos de petróleo", "event": "factory_expansion", "effects": {"money": 16, "production": 6, "employment": 2, "company_approval": 7, "economy": 3, "diversification": -2}}
+    ]
+  },
+  {
+    "id": "oil_transition_masterplan", "category": "diversification", "weight": 1.1, "repeatable": false, "min_day": 4, "tags": ["diversification", "oil_crisis"],
+    "title": "O mapa depois do último barril",
+    "context": "As reservas diminuem. Uma comissão pede metas de transição, requalificação e uso dos terrenos industriais.",
+    "conditions": {"max": {"oil": 58}},
+    "choices": [
+      {"id": "adopt_oil_transition_plan", "text": "Adotar metas públicas para a transição", "event": "transition_plan", "effects": {"money": -20, "production": -5, "employment": 3, "environment": 8, "population_approval": 11, "company_approval": -8, "economy": 8, "diversification": 16}},
+      {"id": "delay_transition_plan", "text": "Adiar metas até estabilizar o caixa", "event": "factory_expansion", "effects": {"money": 8, "production": 4, "company_approval": 6, "population_approval": -7, "diversification": -2}}
+    ]
+  },
+  {
+    "id": "harbor_market_hall", "category": "society", "weight": 0.85, "repeatable": false, "tags": ["society", "diversification"],
+    "title": "Um mercado junto ao porto",
+    "context": "Artesãos, pescadores e cozinheiros querem transformar um galpão vazio em mercado público durante todo o ano.",
+    "choices": [
+      {"id": "build_harbor_market", "text": "Recuperar o galpão como mercado público", "event": "diversification_push", "effects": {"money": -18, "employment": 6, "population_approval": 10, "economy": 8, "diversification": 9}},
+      {"id": "lease_hall_to_company", "text": "Alugar o galpão para logística industrial", "event": "factory_expansion", "effects": {"money": 12, "production": 3, "employment": 2, "company_approval": 5, "population_approval": -3}}
+    ]
+  },
+  {
+    "id": "worker_retraining_program", "category": "society", "weight": 0.9, "repeatable": true, "cooldown_days": 4, "tags": ["society", "diversification", "oil_crisis"],
+    "title": "Outra profissão no mesmo crachá",
+    "context": "O sindicato propõe cursos pagos para operadores migrarem para manutenção naval, energia e serviços.",
+    "conditions": {"max": {"oil": 72}},
+    "choices": [
+      {"id": "fund_worker_retraining", "text": "Pagar cursos durante o horário de trabalho", "event": "worker_support", "effects": {"money": -19, "production": -4, "employment": 5, "population_approval": 11, "company_approval": -5, "economy": 6, "diversification": 10}},
+      {"id": "weekend_retraining", "text": "Oferecer cursos voluntários aos fins de semana", "event": "worker_support", "effects": {"money": -8, "production": -1, "employment": 2, "population_approval": 4, "economy": 3, "diversification": 4}}
+    ]
+  }
+]
